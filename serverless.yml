@@ -20,9 +20,13 @@ service: aws-nodejs # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
+  role: arn:aws:iam::218913323419:role/service-role/mottojoy-blog
+  versionFunctions: true
+  profile: default2
 
 # you can overwrite defaults here
 #  stage: dev
+# do not change region because lambda@edge only works in us-east-1 region
   region: us-east-1
 
 # you can add statements to the Lambda function's IAM Role here
@@ -92,7 +96,8 @@ functions:
 
 #    Define function environment variables here
 #    environment:
-#      variable2: value2
+#      incomingSiteUrl: mottojoy-blog-elb-1224504567.eu-central-1.elb.amazonaws.com
+#      outgoingSitePrefix: /blog
 
 # you can add CloudFormation resource templates here
 #resources:

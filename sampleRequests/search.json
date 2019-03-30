@@ -1,0 +1,113 @@
+{
+  "Records": [
+    {
+      "cf": {
+        "config": {
+          "distributionId": "EXAMPLE"
+        },
+        "request": {
+          "body": {
+            "action": "read-only",
+            "data": "YWN0aW9uPXRkX2FqYXhfc2VhcmNoJnRkX3N0cmluZz1hc2Rhcw==",
+            "encoding": "base64",
+            "inputTruncated": false
+          },
+          "clientIp": "88.233.64.116",
+          "headers": {
+            "host": [
+              {
+                "key": "Host",
+                "value": "mottojoy-blog-elb-1224504567.eu-central-1.elb.amazonaws.com"
+              }
+            ],
+            "cookie": [
+              {
+                "key": "Cookie",
+                "value": "_ga=GA1.2.1236515999.1553886829; _gid=GA1.2.365823413.1553886829"
+              }
+            ],
+            "user-agent": [
+              {
+                "key": "User-Agent",
+                "value": "Amazon CloudFront"
+              }
+            ],
+            "via": [
+              {
+                "key": "Via",
+                "value": "1.1 7deb7dee58be2712f04cf5e58778a769.cloudfront.net (CloudFront)"
+              }
+            ],
+            "content-length": [
+              {
+                "key": "Content-Length",
+                "value": "37"
+              }
+            ],
+            "x-forwarded-for": [
+              {
+                "key": "X-Forwarded-For",
+                "value": "88.233.64.116"
+              }
+            ],
+            "pragma": [
+              {
+                "key": "pragma",
+                "value": "no-cache"
+              }
+            ],
+            "cache-control": [
+              {
+                "key": "cache-control",
+                "value": "no-cache"
+              }
+            ],
+            "origin": [
+              {
+                "key": "origin",
+                "value": "https://mottojoy.com"
+              }
+            ],
+            "x-requested-with": [
+              {
+                "key": "x-requested-with",
+                "value": "XMLHttpRequest"
+              }
+            ],
+            "content-type": [
+              {
+                "key": "content-type",
+                "value": "application/x-www-form-urlencoded; charset=UTF-8"
+              }
+            ],
+            "accept-encoding": [
+              {
+                "key": "accept-encoding",
+                "value": "gzip, deflate, br"
+              }
+            ]
+          },
+          "method": "POST",
+          "origin": {
+            "custom": {
+              "customHeaders": {},
+              "domainName": "mottojoy-blog-elb-1224504567.eu-central-1.elb.amazonaws.com",
+              "keepaliveTimeout": 5,
+              "path": "",
+              "port": 80,
+              "protocol": "http",
+              "readTimeout": 30,
+              "sslProtocols": [
+                "TLSv1",
+                "TLSv1.1",
+                "TLSv1.2"
+              ]
+            }
+          },
+          "querystring": "td_theme_name=Newspaper&v=9.2.2",
+          "uri": "/blog/wp-admin/admin-ajax.php"
+        }
+      }
+    }
+  ]
+}

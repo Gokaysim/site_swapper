@@ -1,0 +1,36 @@
+{
+  "Records": [
+    {
+      "cf": {
+        "config": {
+          "distributionId": "EXAMPLE"
+        },
+        "request": {
+          "uri": "/blog/wp-comments-post.php",
+          "method": "POST",
+          "clientIp": "2001:cdba::3257:9652",
+          "headers": {
+            "user-agent": [
+              {
+                "key": "User-Agent",
+                "value": "test-agent"
+              }
+            ],
+            "host": [
+              {
+                "key": "Host",
+                "value": "mottojoy.com"
+              }
+            ],
+            "content-type": [
+              {
+                "key":"Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
