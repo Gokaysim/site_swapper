@@ -1,13 +1,15 @@
 const getComputedResponse = require("./responseAlterer").getComputedResponse;
 const getHtmlHeadersFromRequest = require('./headerHelpers').getHtmlHeadersFromRequest;
-const capitalizeHeaders = require('./headerHelpers').capitalizeHeaders;
+// const capitalizeHeaders = require('./headerHelpers').capitalizeHeaders;
+const getCloudFrontHeaders = require('./headerHelpers').getCloudFrontHeaders;
 const fetch = require('node-fetch');
 
 const incomingSiteUrl = require('./constants').incomingSiteUrl;
 const outgoingSitePrefix = require('./constants').outgoingSitePrefix;
 exports.handler = async (event) => {
+
     const request = event.Records[0].cf.request;
-    console.log(JSON.stringify(request));
+    // console.log(JSON.stringify(request));
     const siteName = "mottojoy.com";
     // const incomingSiteUrl =request.headers['host'][0].value;
 
@@ -35,6 +37,7 @@ exports.handler = async (event) => {
     {
         queryString=`?${request.querystring}`;
     }
+
     const response = await fetch(
         `${url}${request.uri}${queryString}`,
         {
@@ -43,18 +46,22 @@ exports.handler = async (event) => {
             body: body
         }
     );
+
     const data = await response.text();
-    const headers={};
+    const rawHeaders={};
     response.headers.forEach(
         function(val, key)
         {
-            headers[capitalizeHeaders(key)]=val;
+            rawHeaders[key]=val;
         }
     );
-    const finalResponse= await getComputedResponse(outgoingSitePrefix,siteName,
-        data,response.status,response.statusText,
-        headers);
-    console.log(finalResponse);
 
-    return finalResponse;
+    const headers = getCloudFrontHeaders(rawHeaders);
+    const responseBody= await getComputedResponse(outgoingSitePrefix,siteName,data);
+    return {
+        status: response.status ,
+        statusDescription: response.statusText,
+        headers:headers,
+        body: responseBody
+    };
 };

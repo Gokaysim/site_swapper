@@ -22,6 +22,12 @@ const equalsHeaders=[
     'x-forwarded-proto',
     'x-real-ip',
     'x-cache',
+    'link',
+
+    'cache-control',
+    'content-encoding',
+    // 'server',
+    // 'x-powered-by'
 ];
 const startWithsheaders = [
     'a-amz-cf-',
@@ -30,7 +36,8 @@ const startWithsheaders = [
 ];
 const htmlEqualsHeaders=[
     'host',
-    'content-length'
+    'content-length',
+    'link'
 ];
 function htmlIsForbiden(headerKey) {
     const loweredHeaderKey= headerKey.toLowerCase();

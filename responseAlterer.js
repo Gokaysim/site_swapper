@@ -1,7 +1,6 @@
-const getCloudFrontHeaders = require('./headerHelpers').getCloudFrontHeaders;
 const fs = require('fs');
 
-exports.getComputedResponse = async function (outgoingSitePrefix,siteName,rawData,statusCode,statusDescription,rawHeaders){
+exports.getComputedResponse = async function (outgoingSitePrefix,siteName,rawData){
     let data = rawData;
     const fullUri = siteName+outgoingSitePrefix;
     const dataRetinaReplace = 'data-retina="'+outgoingSitePrefix+'/';
@@ -10,8 +9,8 @@ exports.getComputedResponse = async function (outgoingSitePrefix,siteName,rawDat
     data = data.replace(/src="\//g,srcReplace );
 
     data = data.replace(/mottojoy-blog-elb-1224504567.eu-central-1.elb.amazonaws.com/g, fullUri);
-    const regEx = new RegExp(siteName,'gi');
-    data = data.replace(regEx, fullUri);
+    // const regEx = new RegExp(siteName,'gi');
+    // data = data.replace(regEx, fullUri);
 
     data = data.replace(/http:\/\/54.93.199.214/g, '/blog');
     data = data.replace(/http:/gi,'https:');
@@ -24,15 +23,8 @@ exports.getComputedResponse = async function (outgoingSitePrefix,siteName,rawDat
     // });
     // await filePromise;
 
-    const headers = getCloudFrontHeaders(rawHeaders);
     // const buffer = zlib.gzipSync(data);
     // const base64EncodedBody = buffer.toString('base64');
 
-    return {
-        status: statusCode,
-        statusDescription: statusDescription,
-        headers: headers,
-        body: data,
-        // bodyEncoding: 'base64',
-    };
+    return data;
 };

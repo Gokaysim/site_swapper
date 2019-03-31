@@ -22,7 +22,6 @@ provider:
   runtime: nodejs8.10
   role: arn:aws:iam::218913323419:role/service-role/mottojoy-blog
   versionFunctions: true
-  profile: default2
 
 # you can overwrite defaults here
 #  stage: dev
@@ -64,6 +63,10 @@ functions:
     name: mottojoy-blog-origin-request2
     memorySize: 128 # optional, in MB, default is 1024
     timeout: 5
+#    lambdaAtEdge:
+#      distribution: 'E1MD6ODU7CYE4M'
+#      eventType: 'origin-request'
+#      pathPattern: 'blog*'
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -110,3 +113,6 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+#
+#plugins:
+#  - '@silvermine/serverless-plugin-cloudfront-lambda-edge'
